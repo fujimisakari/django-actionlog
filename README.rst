@@ -43,12 +43,12 @@ If you want to install it from source, grab the git repository from GitHub and r
 Installing It
 =============
 
-To enable `django_actionlog` in your project you need to add it to `MIDDLEWARE_CLASSES` and `ACTION_LOG_SETTING` in your projects 
+To enable `django-actionlog` in your project you need to add it to `MIDDLEWARE_CLASSES` and `ACTION_LOG_SETTING` in your projects 
 `settings.py` file::
 
     MIDDLEWARE_CLASSES = (
         ...
-        'django_actionlog.middleware.ActionLogMiddleware',
+        'django-actionlog.middleware.ActionLogMiddleware',
         ...
     )
 

@@ -18,7 +18,7 @@ setup(
     author_email='fujimisakari@gmail.com',
     url='http://github.com/fujimisakari/django-actionlog',
     license='BSD',
-    packages=['django-actionlog'],
+    packages=['django-actionlog', 'django-actionlog.handler'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
