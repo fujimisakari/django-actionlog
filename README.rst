@@ -15,6 +15,7 @@ Requirements
 ============
 
 Django Actionlog requires Django 1.6 or later
+
 fluent-logger 0.4.1 or later
 
 
