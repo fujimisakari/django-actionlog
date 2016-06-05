@@ -2,6 +2,10 @@
  Django Actionlog
 ===================
 
+.. image:: https://img.shields.io/pypi/v/django-actionlog.svg
+    :target: https://pypi.python.org/pypi/django-actionlog/
+    :alt: Latest PyPI version
+
 
 Getting Started
 ===============
@@ -10,6 +14,7 @@ Django Action is can be check the python-time, sql-time and query-count for each
 for the Django Framework. Result outputs the log to file, console or fluentd.
 
 .. image:: https://raw.github.com/fujimisakari/django-actionlog/master/example/django-actionlog.png
+
 
 Requirements
 ============
