@@ -10,12 +10,14 @@ Django Action is can be check the python-time, sql-time and query-count for each
 for the Django Framework. Result outputs the log to file, console or fluentd.
 
 .. image:: https://raw.github.com/fujimisakari/django-actionlog/master/example/django-actionlog.png
-
+   :width: 908
+   :height: 957
 
 Requirements
 ============
 
-Django Actionlog requires Django 1.6 or later.
+Django Actionlog requires Django 1.6 or later
+fluent-logger 0.4.1 or later
 
 
 Getting It
