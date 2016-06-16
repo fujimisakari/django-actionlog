@@ -63,7 +63,7 @@ class ActionLogMiddleware(object):
         try:
             view_name = resolve(path).view_name
         except Resolver404:
-            view_name = '(Can\'t resolve) path={}'.format(path)
+            view_name = '{}'.format(path)
 
         actionlog_start = _get('actionlog_start')
         total_time = round((time.time() - actionlog_start), 2)
