@@ -17,10 +17,10 @@ def set_custom_cursor(connection, logger):
     if not hasattr(connection, 'actionlog_cursor'):
         connection.actionlog_cursor = connection.cursor
 
-        def cursor():
-            return CustomCursorWrapper(connection.actionlog_cursor(), connection, logger)
+    def cursor():
+        return CustomCursorWrapper(connection.actionlog_cursor(), connection, logger)
 
-        connection.cursor = cursor
+    connection.cursor = cursor
 
 
 class SqlLogger(object):
