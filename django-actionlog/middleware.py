@@ -11,7 +11,7 @@ try:
     from django.conf import settings
     ACTION_LOG_SETTING = settings.ACTION_LOG_SETTING
 except AttributeError:
-    ACTION_LOG_SETTING = {'handler_type': 'null', 'logfile': '/tmp/django_action.log'}
+    ACTION_LOG_SETTING = {'handler_type': 'null'}
 
 from .sql_logger import SqlLogger, ready_sql_logger
 from .actionlog import ActionLog
@@ -35,7 +35,7 @@ class ActionLogMiddleware(object):
         self.sql_logger = None
         self.actlog = ActionLog(ACTION_LOG_SETTING, is_middleware=True)
 
-    def process_request(self, _):
+    def process_view(self, request, view_func, view_args, view_kwargs):
         _new('actionlog_start', time.time)
         _new('sqlloger', SqlLogger)
         ready_sql_logger(_get('sqlloger'))
@@ -68,7 +68,7 @@ class ActionLogMiddleware(object):
         actionlog_start = _get('actionlog_start')
         total_time = round((time.time() - actionlog_start), 2)
 
-        user_name = None
+        user_name = ''
         login_obj_name = ACTION_LOG_SETTING.get('login_obj_name', 'user')
         if hasattr(request, login_obj_name):
             login_obj = getattr(request, login_obj_name)

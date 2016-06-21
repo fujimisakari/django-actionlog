@@ -19,6 +19,7 @@ setup(
     url='http://github.com/fujimisakari/django-actionlog',
     license='BSD',
     packages=['django-actionlog', 'django-actionlog.handler'],
+    install_requires=['fluent-logger'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
