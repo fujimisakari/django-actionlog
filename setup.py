@@ -7,7 +7,7 @@ from setuptools import setup
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-version = __import__('django-actionlog').__version__
+version = __import__('django_actionlog').__version__
 
 setup(
     name='django-actionlog',
@@ -18,7 +18,7 @@ setup(
     author_email='fujimisakari@gmail.com',
     url='http://github.com/fujimisakari/django-actionlog',
     license='BSD',
-    packages=['django-actionlog', 'django-actionlog.handler'],
+    packages=['django_actionlog', 'django_actionlog.handler'],
     install_requires=['fluent-logger'],
     classifiers=[
         'Development Status :: 4 - Beta',
