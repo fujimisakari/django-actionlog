@@ -48,7 +48,7 @@ To enable `django-actionlog` in your project you need to add it to `MIDDLEWARE_C
 
     MIDDLEWARE_CLASSES = (
         ...
-        'django-actionlog.middleware.ActionLogMiddleware',
+        'django_actionlog.middleware.ActionLogMiddleware',
         ...
     )
 
