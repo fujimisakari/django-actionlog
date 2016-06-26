@@ -18,10 +18,10 @@ class Stdout(object):
             output = log_format.dict_to_str(messages)
             print output
         else:
-            if messages['status_code'] == 200:
-                output = log_format.status_log_200(messages)
+            if messages['status_code'] == 500:
+                output = log_format.error_log(messages)
             else:
-                output = log_format.status_log_500(messages)
+                output = log_format.standard_log(messages)
             print output
 
 handler_manager.register('stdout', Stdout)

@@ -5,57 +5,59 @@ from __future__ import unicode_literals
 import datetime
 
 
-OUTPUT_200 = '================== Footprint Log ==================\n' \
-             'time        : {}\n' \
-             'url         : {}\n' \
-             'view_name   : {}\n' \
-             'status_code : {}\n' \
-             'method      : {}\n' \
-             'user        : {}\n' \
-             'sql_count   : {}\n' \
-             'sql_time    : {}\n' \
-             'python_time : {}\n' \
-             'total_time  : {}\n\n'
+OUTPUT_STANDARD = '================== Footprint Log ==================\n' \
+                  'time        : {}\n' \
+                  'url         : {}\n' \
+                  'view_name   : {}\n' \
+                  'request_id  : {}\n' \
+                  'status_code : {}\n' \
+                  'method      : {}\n' \
+                  'user        : {}\n' \
+                  'sql_count   : {}\n' \
+                  'sql_time    : {}\n' \
+                  'python_time : {}\n' \
+                  'total_time  : {}\n\n'
 
 
-OUTPUT_500 = '================== Footprint Log ==================\n' \
-             'time        : {}\n' \
-             'url         : {}\n' \
-             'view_name   : {}\n' \
-             'status_code : {}\n' \
-             'method      : {}\n' \
-             'user        : {}\n' \
-             'ex_type     : {}\n' \
-             'ex_message  : {}\n\n'
+OUTPUT_ERROR = '================== Footprint Log ==================\n' \
+               'time        : {}\n' \
+               'url         : {}\n' \
+               'view_name   : {}\n' \
+               'status_code : {}\n' \
+               'method      : {}\n' \
+               'user        : {}\n' \
+               'ex_type     : {}\n' \
+               'ex_message  : {}\n\n'
 
 
 def _get_time_str():
     return datetime.datetime.now().strftime(u'%Y/%m/%d %H:%M:%S')
 
 
-def status_log_200(messages):
-    output = OUTPUT_200.format(_get_time_str(),
-                               messages['url'],
-                               messages['view_name'],
-                               messages['status_code'],
-                               messages['method'],
-                               messages['user'],
-                               messages['sql_count'],
-                               messages['sql_time'],
-                               messages['python_time'],
-                               messages['total_time'])
+def standard_log(messages):
+    output = OUTPUT_STANDARD.format(_get_time_str(),
+                                    messages['url'],
+                                    messages['view_name'],
+                                    messages['request_id'],
+                                    messages['status_code'],
+                                    messages['method'],
+                                    messages['user'],
+                                    messages['sql_count'],
+                                    messages['sql_time'],
+                                    messages['python_time'],
+                                    messages['total_time'])
     return output
 
 
-def status_log_500(messages):
-    output = OUTPUT_500.format(_get_time_str(),
-                               messages['url'],
-                               messages['view_name'],
-                               messages['status_code'],
-                               messages['method'],
-                               messages['user'],
-                               messages['ex_type'],
-                               messages['ex_message'])
+def error_log(messages):
+    output = OUTPUT_ERROR.format(_get_time_str(),
+                                 messages['url'],
+                                 messages['view_name'],
+                                 messages['status_code'],
+                                 messages['method'],
+                                 messages['user'],
+                                 messages['ex_type'],
+                                 messages['ex_message'])
     return output
 
 
