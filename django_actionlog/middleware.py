@@ -15,16 +15,17 @@ except AttributeError:
 from .sql_logger import SqlLogger, ready_sql_logger
 from .actionlog import ActionLog
 
+_action_log = ActionLog(ACTION_LOG_SETTING, is_middleware=True)
+_is_enable = True if ACTION_LOG_SETTING['handler_type'] != 'null' else False
+
 
 class ActionLogMiddleware(object):
 
-    def __init__(self):
-        self.actlog = ActionLog(ACTION_LOG_SETTING, is_middleware=True)
-
     def process_view(self, request, view_func, view_args, view_kwargs):
-        request.actionlog_start = time.time()
-        request.sql_logger = SqlLogger()
-        ready_sql_logger(request.sql_logger)
+        if _is_enable:
+            request.actionlog_start = time.time()
+            request.sql_logger = SqlLogger()
+            ready_sql_logger(request.sql_logger)
 
     def process_response(self, request, response):
         if not hasattr(request, 'actionlog_start'):
@@ -37,7 +38,7 @@ class ActionLogMiddleware(object):
         message['sql_count'] = sql_logger.sql_count
         message['sql_time'] = sql_logger.sql_time
         message['python_time'] = round((message['total_time'] - sql_logger.sql_time), 2)
-        self.actlog.log(**message)
+        _action_log.log(**message)
         return response
 
     def process_exception(self, request, ex):
@@ -48,7 +49,7 @@ class ActionLogMiddleware(object):
         message['status_code'] = 500
         message['ex_type'] = ex.__class__.__name__
         message['ex_message'] = unicode(ex.message)
-        self.actlog.log(**message)
+        _action_log.log(**message)
 
     def _create_log_message(self, request):
         path = request.path
