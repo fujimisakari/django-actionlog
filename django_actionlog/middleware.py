@@ -12,6 +12,11 @@ try:
 except AttributeError:
     ACTION_LOG_SETTING = {'handler_type': 'null'}
 
+try:
+    from django.utils.deprecation import MiddlewareMixin
+except ImportError:
+    MiddlewareMixin = object
+
 from .sql_logger import SqlLogger, ready_sql_logger
 from .actionlog import ActionLog
 
@@ -19,7 +24,7 @@ _action_log = ActionLog(ACTION_LOG_SETTING, is_middleware=True)
 _is_enable = True if ACTION_LOG_SETTING['handler_type'] != 'null' else False
 
 
-class ActionLogMiddleware(object):
+class ActionLogMiddleware(MiddlewareMixin):
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         if _is_enable:
