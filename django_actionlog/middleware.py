@@ -53,7 +53,10 @@ class ActionLogMiddleware(MiddlewareMixin):
         message = self._create_log_message(request)
         message['status_code'] = 500
         message['ex_type'] = ex.__class__.__name__
-        message['ex_message'] = unicode(ex.message)
+        try:
+            message['ex_message'] = unicode(ex.message)
+        except:
+            message['ex_message'] = str(ex)
         _action_log.log(**message)
 
     def _create_log_message(self, request):
