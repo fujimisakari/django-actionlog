@@ -82,5 +82,7 @@ class ActionLogMiddleware(MiddlewareMixin):
                    'view_name': view_name,
                    'method': request.method,
                    'user': user_name,
+                   'remote_ip': request.META.get('REMOTE_ADDR', ''),
+                   'user_agent': request.META.get('HTTP_USER_AGENT', ''),
                    'total_time': round((time.time() - request.actionlog_start), 2)}
         return message
