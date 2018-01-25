@@ -13,6 +13,8 @@ OUTPUT_STANDARD = '================== Footprint Log ==================\n' \
                   'status_code : {}\n' \
                   'method      : {}\n' \
                   'user        : {}\n' \
+                  'remote_ip   : {}\n' \
+                  'user_agnet  : {}\n' \
                   'sql_count   : {}\n' \
                   'sql_time    : {}\n' \
                   'python_time : {}\n' \
@@ -26,6 +28,8 @@ OUTPUT_ERROR = '================== Footprint Log ==================\n' \
                'status_code : {}\n' \
                'method      : {}\n' \
                'user        : {}\n' \
+               'remote_ip   : {}\n' \
+               'user_agnet  : {}\n' \
                'ex_type     : {}\n' \
                'ex_message  : {}\n\n'
 
@@ -42,6 +46,8 @@ def standard_log(messages):
                                     messages['status_code'],
                                     messages['method'],
                                     messages['user'],
+                                    messages['remote_ip'],
+                                    messages['user_agent'],
                                     messages['sql_count'],
                                     messages['sql_time'],
                                     messages['python_time'],
@@ -56,6 +62,8 @@ def error_log(messages):
                                  messages['status_code'],
                                  messages['method'],
                                  messages['user'],
+                                 messages['remote_ip'],
+                                 messages['user_agent'],
                                  messages['ex_type'],
                                  messages['ex_message'])
     return output
