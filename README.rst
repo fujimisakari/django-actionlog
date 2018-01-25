@@ -78,8 +78,8 @@ Case of output fluentd ::
     
 Case of want to output custom actionlog ::
 
-    from django-actionlog import actionlog
+    from django_actionlog import actionlog
 
     ...    
-    actionlog.log({'foo': 'bar', 'fizz': 'buzz'...})
+    actionlog.output({'foo': 'bar', 'fizz': 'buzz'...})
     ...
